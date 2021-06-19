@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Count Decount</title>
+  <link rel="stylesheet" href="index.css">
+  <script>
+    const updateValue = (x) => {
+      countEl =document.querySelector('.count')
+      const currentVal = countEl.innerHTML;
+      switch (x) {
+        case 'increment':
+          document.querySelector('.count').innerHTML= +currentVal+1;
+          break;
+        case 'decrement':
+          if (currentVal >0) {
+            document.querySelector('.count').innerHTML= +currentVal-1;
+          }
+          break;
+          case 'reset':
+          document.querySelector('.count').innerHTML= 0;
+          break;
+        default:
+          break;
+      }
+    }
+    const handleKeyDown= (e)=> {
+  console.log(e.key);
+  // eslint-disable-next-line default-case
+  switch(e.key) {
+    case "-" :
+      updateValue('decrement');
+      break;
+    case "+" :
+      updateValue('increment');
+      break;
+      case "Enter" : 
+      updateValue('reset');
+  }
+}
+    window.addEventListener('keydown', handleKeyDown);
+  </script>
+</head>
+
+<body>
+  <div className="App">
+    <div class="count">0</div>
+    <div class="button_wrapper"></div>
+    <div class="increment button" onclick="updateValue('increment')">Add</div>
+    <div class="decrement button" onclick="updateValue('decrement')">Subtract</div>
+    <div class="reset button" onclick="updateValue('reset')">Reset</div>
+  </div>
+</body>
+
+</html>
