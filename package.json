@@ -1,8 +1,8 @@
 {
   "name": "count-decount",
-  "productName": "count-decount",
+  "productName": "Count Decount",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Counter App",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -10,7 +10,27 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\"",
-    "make-exe": "electron-forge make --platform win32"
+    "make-exe": "electron-forge make --platform win32",
+    "build-installer": "electron-builder"
+  },
+
+  "build": {
+    "appId": "count-decount",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "src/fav.ico",
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "nsis": {
+      "installerIcon": "src/fav.ico",
+      "uninstallerIcon": "src/fav.ico",
+      "uninstallDisplayName": "Count Decount",
+      "license": "license.txt",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "keywords": [],
   "author": "in-aditya.saxena",
@@ -28,7 +48,8 @@
         {
           "name": "@electron-forge/maker-zip",
           "platforms": [
-            "darwin", "win32"
+            "darwin",
+            "win32"
           ]
         },
         {
@@ -51,6 +72,7 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.57",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.57",
     "@electron-forge/maker-zip": "^6.0.0-beta.57",
-    "electron": "13.1.2"
+    "electron": "13.1.2",
+    "electron-builder": "^22.11.7"
   }
 }
